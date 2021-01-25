@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/home.css">
+    <title>Home</title>
+</head>
+<body>
+<!-- latihan 1 kolom -->
+<div id="app">
+<div class="container">
+<div class="top">
+ <img src="../image/VuejsAp.png" weight=100% width=100%>
+    </div>
+
+    <header>Header
+</header>
+
+<div class="logout">
+    <button v-bind:class="{active: menu=== 'logOut'}" v-on:click="menu = 'logOut'"> Log out </button>
+</div>
+<aside>
+    <li>
+        <a href="./home.html">Home</a>
+        <a href="./menentukan jenis bilangan.html">menentukan Bilangan</a>
+        <a href="./contact us.html">contact form</a>
+    <button v-bind:class="{active: menu=== 'Home'}" v-on:click="menu = 'Home'">Home</button>
+    <button v-bind:class="{active: menu=== 'menentukanBilangan'}" v-on:click="menu = 'menentukanBilangan'">Menentukan jenis bilangan</button>
+    <button v-bind:class="{active: menu=== 'contactUs'}" v-on:click="menu = 'contactUs'" >contact form </button><br><br>
+        </li>
+
+</aside>
+ <main>
+     <transition>
+        <router-view v-on:click="menu"> {{menu}} </router-view>
+     </transition>
+     <h4>What is Vue.js?</h4>
+     <p>   Vue (pronounced /vjuː/, like view) is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.</p>
+    </main>
+<footer>Footer</footer>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+<!--<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script> -->
+<script>
+   const Home = {
+       template: '<div>Home</div>'
+   }
+   const menentukanBilangan = {
+       template: '<div>penjumlahan</div>'
+   }
+   const contactUs = {
+       template: '<div>contactUs</div>'
+   }    
+   
+   const routes = [
+  { path: '/Home', component: Home },
+  { path: '/penjumlahan', component: menentukanBilangan },
+  { path: '/contactUs', component:contactUs}
+]
+
+const router = new VueRouter({
+  routes // short for `routes: routes`
+})
+
+const vm = new Vue({
+    el: '#app',
+    router,
+    component: {
+        'Home': Home
+    },
+    data: {
+    //string, number,boolean,array,object
+            bilangan: 1,
+            menu: 'Home, penjumlahan,contactUs'
+        },
+
+        methods: {
+            penjumlahan: function(){
+                    return this.bilangan++
+                },
+        }
+})
+        
+
+    </script>
+</body>
+</html>
+
+
+

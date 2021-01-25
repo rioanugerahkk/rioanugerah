@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/home.css">
+    <title> menentukan jenis bilangan</title>
+</head>
+<body>
+<!-- latihan 1 kolom -->
+<div id="app">
+<div class="container">
+<div class="top">
+ <img src="../image/VuejsAp.png" weight=100% width=100%>
+    </div>
+<header>Header
+  
+</header>
+
+<div class="logout">
+    <button v-bind:class="{active: menu=== 'logOut'}" v-on:click="menu = 'logOut'"> Log out </button>
+</div>
+<aside>
+    <router-link to="/">Home</router-link>
+        <router-link to="/penjumlahan">menentukan Bilangan</router-link>
+        <router-link to="/contactUs">contact form</router-link>
+    <button v-bind:class="{active: menu=== 'Home'}" v-on:click="menu = 'Home'">Home</button>
+    <button v-bind:class="{active: menu=== 'menentukanBilangan'}" v-on:click="menu = 'menentukanBilangan'">Menentukan jenis bilangan</button>
+    <button v-bind:class="{active: menu=== 'Blog'}" v-on:click="menu = 'Blog'" >Blog </button><br><br>
+</aside>
+ <main>
+     <h4>Menentukan jenis bilangan</h4>
+     <div class="menentukanBilangan">
+        <h2>menentukan jenis bilangan</h2>
+        <h3>{{'Angka: '+bilangan }}</h3>
+        <h5>angka ini adalah bilangan {{ infoBilangan}} </h5>
+        <p>
+            <button v-on:click="tambahBilangan">Tambahkan angka</button>
+            <button v-on:click="kurangiBilangan">Kurangi angka</button>
+            <button v-on:click="resetBilangan">Reset</button>
+
+        </p>
+        </div>
+
+        <router-view v-bind:items="menentukanBilangan" v-on="menentukanBilangan"></router-view>
+    </main>
+<footer>Footer</footer>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
+<script src="../javascript/menentukanjenisbilangan.js"></script>
+<script>
+    const Home = {
+       template: '<div>Home</div>'
+   }
+   const menentukanBilangan = {
+       template: '<div>penjumlahan</div>'
+   }
+   const contactUs = {
+       template: '<div>contactUs</div>'
+   }    
+   
+   const routes = [
+  { path: '/Home', component: Home },
+  { path: '/penjumlahan', component: menentukanBilangan },
+  { path: '/contactUs', component:contactUs}
+]
+
+const router = new VueRouter({
+  routes // short for `routes: routes`
+})
+    const vm = new Vue({
+        
+            el:'#app',router,
+            data: {
+    //string, number,boolean,array,object
+            name: 'rio anugerah k',
+            pesan: 'hallo',
+            qty: 3,
+            namaDepan: 'rio ',
+            namaBelakang: 'anugerah',
+            bilangan: 1,
+            link: '<a href="">kelas.baledemy</a>',
+            gambar: '../basic/VuejsAp.png',
+            menu: 'Home',
+            kelas: []
+        },  
+            methods: {
+                tambahBilangan: function(){
+                    return this.bilangan++
+                },
+                kurangiBilangan: function(){
+                    return this.bilangan--
+                },
+                resetBilangan: function(){
+                    return this.bilangan = 0
+                }
+            },
+            computed: {
+                infoBilangan : function(){
+                  return this.bilangan % 2 ===0 ? 'genap':'ganjil'
+                }
+            }
+    
+    })
+        
+    </script>
+</body>
+</html>

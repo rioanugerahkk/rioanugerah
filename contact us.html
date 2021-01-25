@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/contactUs.css">
+    <title>contact form</title>
+</head>
+<body>
+<!-- latihan 1 kolom -->
+<div id="app">
+<div class="container">
+<div class="top">
+ <img src="../image/VuejsAp.png" weight=100% width=100%>
+    </div>
+<header>Header
+</header>
+
+<div class="logout">
+    <button v-bind:class="{active: menu=== 'logOut'}" v-on:click="menu = 'logOut'"> Log out </button>
+</div>
+<aside>
+    <li>
+    <button v-bind:class="{active: menu=== 'Home'}" v-on:click="menu = 'Home'">Home</button>
+    <button v-bind:class="{active: menu=== 'menentukanBilangan'}" v-on:click="menu = 'menentukanBilangan'">Menentukan jenis bilangan</button>
+    <button v-bind:class="{active: menu=== 'contactUs'}" v-on:click="menu = 'contactUs'" >contact form </button><br><br>
+        </li>
+
+</aside>
+ <main>
+     <div class="contact-form">
+     <h4>Hubungi kami</h4>
+    <p>Email (Wajib Diisii)</p>
+    <input><br><br><br><br>
+    <p>Pesan (Wajib Diisi)</p>
+    <textarea></textarea><br<br><br><br><br><br><br>
+    <button value="kirim">Kirim</button>
+     </div>   
+    </main>
+<footer>Footer</footer>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script>
+    const vm = new Vue({
+            el:'#app',router,
+            data: {
+    //string, number,boolean,array,object
+            name: 'rio anugerah k',
+            pesan: 'hallo',
+            qty: 3,
+            namaDepan: 'rio ',
+            namaBelakang: 'anugerah',
+            bilangan: 1,
+            link: '<a href="">kelas.baledemy</a>',
+            gambar: '../basic/VuejsAp.png',
+            menu: 'Home',
+            kelas: []
+        },  
+            methods: {
+                tambahBilangan: function(){
+                    return this.bilangan++
+                },
+                kurangiBilangan: function(){
+                    return this.bilangan--
+                },
+                resetBilangan: function(){
+                    return this.bilangan = 0
+                }
+            },
+            computed: {
+                infoBilangan : function(){
+                  return this.bilangan % 2 ===0 ? 'genap':'ganjil'
+                }
+            }
+    
+    })
+        
+    </script>
+</body>
+</htm
